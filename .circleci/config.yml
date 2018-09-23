@@ -1,0 +1,20 @@
+version:
+  job:
+    build:
+      docker:
+        #specify the version you desire here
+        -images: circleci/node:8.11.1-stretch
+      wworking_directory: ~/repro
+      step:
+        -checkout
+        -restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json"}}
+            #fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+          -run: npm install
+          -save_cache:
+            path:
+              - node_modules
+            key: v1-dependencies-{{ checksum "package.json"}}
+          -run: echo Done
