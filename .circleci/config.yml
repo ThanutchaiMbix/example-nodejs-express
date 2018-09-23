@@ -7,14 +7,16 @@ version:
       wworking_directory: ~/repro
       step:
         -checkout
-        -restore_cache:
+      # Download and cache dependencies
+      - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json"}}
-            #fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
           -run: npm install
           -save_cache:
             path:
               - node_modules
-            key: v1-dependencies-{{ checksum "package.json"}}
+            key: v1-dependencies-{{ checksum "package.json" }}
           -run: echo Done
+
