@@ -35,7 +35,7 @@ jobs:
         
       # run tests!
       - run: npm test
-      - set_remote_docker
+      - setup_remote_docker
       - run: docker login -u $DOCKER_NAME -p $PASS_DOCKER
       - run:
           name: "Build docker images and push to docker hub"
