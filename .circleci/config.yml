@@ -46,9 +46,9 @@ jobs:
           name: "Call to rancher to deploy"
           command: |
               docker run --rm -it \
-                -e CATTELE_ACCESS_KEY="$ACC_KEY" \
-                -e CATTELE_SECRET_KEY="$SEC_KEY" \
-                -e CATTELE_URL="$URL_RANCHER" \
+                -e CATTLE_ACCESS_KEY="$ACC_KEY" \
+                -e CATTLE_SECRET_KEY="$SEC_KEY" \
+                -e CATTLE_URL="$URL_RANCHER" \
                 etlweather/gaucho upgrade $RANCHER_NODE \
                 --imageUuid 'docker:nutmbixtech/examplenode:latest' \
                 --batch_size 3 --start_first \
