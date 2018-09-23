@@ -48,7 +48,7 @@ jobs:
                 -e CATTELE_SECRET_KEY="$SEC_KEY" \
                 -e CATTLE_URL="$URL_RANCHER" \
                 etlweather/gaucho upgrade $RANCHER_NODE \
-                --imageUnid 'docker:nutmbixtech/examplenode' \
+                --imageUuid 'docker:nutmbixtech/examplenode' \
                 --batch_size 3 --start_first \
                 --auto_complete --timeout 600 \
                 /
