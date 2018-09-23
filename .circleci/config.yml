@@ -34,4 +34,13 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
+      - run: npm test
+      - set_remote_docker
+      - run: docker login -u $DOCKER_NAME -p $PASS_DOCKER
+      - run:
+          name: "Build docker images and push to docker hub"
+          command:
+              cp Dockerfile.production Dockerfile
+              docker build -t nutmbixtech/examplenode .
+              docker push nutmbixtech/examplenode
       - run: echo Done
